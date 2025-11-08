@@ -1,0 +1,600 @@
+// Homepage - Tema Electro www.xcp.com.co
+.homePage {
+  min-height: 100vh;
+  background: white;
+}
+
+// Hero Slider - EXACTO como www.xcp.com.co con Revolution Slider
+.heroSlider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.sliderContainer {
+  position: relative;
+  width: 100%;
+  height: 500px;
+
+  @media (max-width: 1240px) {
+    height: 450px;
+  }
+
+  @media (max-width: 1024px) {
+    height: 400px;
+  }
+
+  @media (max-width: 778px) {
+    height: 350px;
+  }
+
+  @media (max-width: 480px) {
+    height: 340px;
+  }
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  display: flex;
+  align-items: center;
+
+  &.active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+    z-index: 1;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.slideContent {
+  max-width: 600px;
+  padding: 40px 0;
+
+  .slideSubtitle {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    padding: 8px 20px;
+    background: rgba(207, 46, 46, 0.9);
+    border-radius: 3px;
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  .slideTitle {
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .slideDescription {
+    font-size: 1.25rem;
+    color: white;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    animation: slideInLeft 1s ease-out;
+  }
+
+  :global(.btn-large) {
+    padding: 16px 45px;
+    font-size: 16px;
+    font-weight: 700;
+    animation: slideInLeft 1.2s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sliderDots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+  }
+
+  &.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: scale(1.3);
+  }
+}
+
+// 3 Category Images Section - Exacto como www.xcp.com.co
+.categoriesImageSection {
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+.categoriesImageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.categoryImageItem {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+// Features Section - 5 bloques como Electro
+.featuresSection {
+  background: white;
+  padding: 50px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.featureBox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 30px 20px;
+  background: white;
+  border-right: 1px solid #e5e5e5;
+  transition: all 0.3s ease;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    background: #f8f8f8;
+
+    .featureIcon svg {
+      stroke: var(--color-primary);
+      transform: scale(1.1);
+    }
+  }
+
+  .featureIcon {
+    flex-shrink: 0;
+
+    svg {
+      stroke: var(--color-secondary);
+      transition: all 0.3s ease;
+    }
+  }
+
+  .featureContent {
+    flex: 1;
+
+    h3 {
+      font-size: 15px;
+      font-weight: 400;
+      color: #54595f;
+      margin: 0 0 3px 0;
+      line-height: 1.2;
+    }
+
+    .featureHighlight {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-heading);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+  }
+}
+
+// Products Section with Tabs - Exacto como Electro
+.productsSection {
+  padding: 70px 0;
+  background: white;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--color-primary);
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.sectionSubtitle {
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.productTabs {
+  display: flex;
+  gap: 0;
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.tabButton {
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-primary);
+  background: white;
+  border: none;
+  border-right: 2px solid var(--color-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    background: rgba(207, 46, 46, 0.05);
+  }
+
+  &.active {
+    background: var(--color-primary);
+    color: white;
+  }
+}
+
+// Categories Section - Exacto como Electro
+.categoriesSection {
+  padding: 70px 0;
+  background: #f8f8f8;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.categoryCard {
+  position: relative;
+  background: white;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  height: 320px;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+
+    .categoryImage img {
+      transform: scale(1.15);
+    }
+
+    .categoryOverlay {
+      background: rgba(0, 0, 0, 0.75);
+
+      .categoryLink {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .categoryImage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #f0f0f0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .categoryPlaceholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f0f0 0%, #fafafa 100%);
+
+      svg {
+        stroke: #ccc;
+      }
+    }
+  }
+
+  .categoryOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: white;
+      margin: 0 0 15px 0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .categoryLink {
+      font-size: 15px;
+      font-weight: 600;
+      color: white;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// Offers Section
+.offersSection {
+  padding: 70px 0;
+  background: white;
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .featuresGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .featureBox:nth-child(3) {
+    border-right: none;
+  }
+
+  .featureBox:nth-child(4),
+  .featureBox:nth-child(5) {
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .slideContent .slideTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .slideContent {
+    max-width: 500px;
+    padding: 30px 0;
+
+    .slideTitle {
+      font-size: 2.5rem;
+    }
+
+    .slideDescription {
+      font-size: 1.1rem;
+    }
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .featureBox:nth-child(2n) {
+    border-right: none;
+  }
+
+  .featureBox:nth-child(n+3) {
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .productTabs {
+    width: 100%;
+  }
+
+  .tabButton {
+    flex: 1;
+    padding: 10px 15px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slideContent {
+    max-width: 400px;
+    padding: 20px 0;
+
+    .slideTitle {
+      font-size: 2rem;
+    }
+
+    .slideDescription {
+      font-size: 1rem;
+    }
+
+    :global(.btn-large) {
+      padding: 12px 30px;
+      font-size: 14px;
+    }
+  }
+
+  .sliderDots {
+    bottom: 20px;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featureBox {
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .productsSection,
+  .categoriesSection,
+  .offersSection {
+    padding: 50px 0;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .categoryCard {
+    height: 280px;
+  }
+}
+
+@media (max-width: 576px) {
+  .slideContent {
+    .slideSubtitle {
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 6px 15px;
+    }
+
+    .slideTitle {
+      font-size: 1.75rem;
+    }
+
+    .slideDescription {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+  }
+
+  .featureBox {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 25px 15px;
+  }
+
+  .productTabs {
+    flex-direction: column;
+  }
+
+  .tabButton {
+    border-right: none;
+    border-bottom: 2px solid var(--color-primary);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categoryCard {
+    height: 250px;
+  }
+}

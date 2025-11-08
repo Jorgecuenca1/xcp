@@ -1,0 +1,177 @@
+{
+  "migrationSummary": {
+    "totalProductsExtracted": 209,
+    "productIdRange": "37-245",
+    "existingProducts": 36,
+    "newProducts": 209,
+    "totalAfterMigration": 245,
+    "extractionDate": "2025-11-03",
+    "sourceDirectory": "C:\\My Web Sites\\xcp\\www.xcp.com.co\\wp-json\\wp\\v2\\product\\",
+    "outputFiles": {
+      "typescriptProducts": "typescript-products.json (764KB)",
+      "extractedData": "extracted-all-products.json (896KB)",
+      "typescriptSnippet": "demodata-products-snippet.ts (352KB, 4613 lines)",
+      "reportFile": "PRODUCT-EXTRACTION-REPORT.md"
+    }
+  },
+  "categoryDistribution": [
+    { "category": "Bombas Sumergibles", "id": "5", "count": 58 },
+    { "category": "Generación y Motores", "id": "14", "count": 54 },
+    { "category": "Bombas Externas", "id": "15", "count": 30 },
+    { "category": "Sin Categoría", "id": "1", "count": 24 },
+    { "category": "Accesorios", "id": "16", "count": 15 },
+    { "category": "Grasas y Lubricantes", "id": "19", "count": 12 },
+    { "category": "Desbaste y Acabados", "id": "18", "count": 7 },
+    { "category": "Herramienta Eléctrica", "id": "6", "count": 4 },
+    { "category": "Soldaduras", "id": "21", "count": 3 },
+    { "category": "Compactación", "id": "20", "count": 1 },
+    { "category": "Jardinería", "id": "17", "count": 1 }
+  ],
+  "newCategoriesNeeded": [
+    { "id": "15", "name": "Bombas Externas", "products": 30 },
+    { "id": "16", "name": "Accesorios", "products": 15 },
+    { "id": "17", "name": "Jardinería", "products": 1 },
+    { "id": "18", "name": "Desbaste y Acabados", "products": 7 },
+    { "id": "19", "name": "Grasas y Lubricantes", "products": 12 },
+    { "id": "20", "name": "Compactación", "products": 1 },
+    { "id": "21", "name": "Soldaduras", "products": 3 }
+  ],
+  "dataQuality": {
+    "fullyExtracted": [
+      "Product titles",
+      "Product slugs",
+      "Short descriptions",
+      "Full descriptions",
+      "Category mappings",
+      "Publication dates",
+      "WordPress product IDs"
+    ],
+    "estimatedGenerated": [
+      "Prices (based on product type)",
+      "Stock levels (5-25 units)",
+      "SKUs (from slug + WP ID)",
+      "Brand IDs (all set to '1')",
+      "Ratings (3.5-5.0 range)",
+      "Review counts (1-20)",
+      "Weight/Dimensions (placeholders)",
+      "Images (placeholder rotation)"
+    ],
+    "missingData": [
+      "Brand information (empty in WordPress)",
+      "Actual pricing",
+      "Actual stock levels",
+      "Product variations",
+      "Product specifications/attributes",
+      "Downloaded product images"
+    ]
+  },
+  "manualReviewRequired": {
+    "uncategorizedProducts": 24,
+    "brandAssignments": 209,
+    "priceVerification": 209,
+    "imageUpdates": 209
+  },
+  "sampleProducts": [
+    {
+      "id": "37",
+      "name": "Bomba Centrífuga Serie CE / DE / EE – Barnes",
+      "category": "Bombas Externas",
+      "price": 2170042,
+      "needsReview": ["brand", "price", "image"]
+    },
+    {
+      "id": "38",
+      "name": "Serie 4SP – Barnes",
+      "category": "Bombas Sumergibles",
+      "price": 988368,
+      "needsReview": ["brand", "price", "image"]
+    },
+    {
+      "id": "100",
+      "name": "Aceite Multiusos 3 Oz - WD-40",
+      "category": "Grasas y Lubricantes",
+      "price": 127846,
+      "needsReview": ["brand", "price", "image"]
+    },
+    {
+      "id": "200",
+      "name": "Disco Diamantado ProGranite 14\" para Corte Preciso en Granito",
+      "category": "Desbaste y Acabados",
+      "price": 158392,
+      "needsReview": ["brand", "price", "image"]
+    }
+  ],
+  "nextSteps": [
+    {
+      "step": 1,
+      "action": "Review typescript-products.json",
+      "description": "Open and review all 209 products in JSON format"
+    },
+    {
+      "step": 2,
+      "action": "Add new categories to demoData.ts",
+      "description": "Create categories 15-21 if they don't exist"
+    },
+    {
+      "step": 3,
+      "action": "Copy products to demoData.ts",
+      "description": "Use demodata-products-snippet.ts as a template"
+    },
+    {
+      "step": 4,
+      "action": "Update brand information",
+      "description": "Extract brands from product titles and create brand entries"
+    },
+    {
+      "step": 5,
+      "action": "Review uncategorized products",
+      "description": "Manually assign categories to 24 products"
+    },
+    {
+      "step": 6,
+      "action": "Verify prices",
+      "description": "Update estimated prices with actual values"
+    },
+    {
+      "step": 7,
+      "action": "Add product images",
+      "description": "Download and add actual product images"
+    }
+  ],
+  "brandsSuggested": {
+    "note": "Extract these brands from product titles and create brand entries",
+    "brands": [
+      "Barnes",
+      "Tsurumi Pump",
+      "Pedrollo",
+      "Hi-Force",
+      "Makita",
+      "WD-40",
+      "Lion Diamond",
+      "Husqvarna",
+      "Furius"
+    ]
+  },
+  "wordPressCategoryMapping": {
+    "topCategories": [
+      { "wpId": 2002, "name": "Bombeo", "productCount": 118 },
+      { "wpId": 2005, "name": "Bombas Sumergibles", "productCount": 57 },
+      { "wpId": 2176, "name": "Generación y Motores", "productCount": 54 },
+      { "wpId": 2003, "name": "Bombas Eléctricas Externas", "productCount": 36 },
+      { "wpId": 2164, "name": "Acueducto y Alcantarillado", "productCount": 20 },
+      { "wpId": 2181, "name": "Motor Diésel", "productCount": 20 }
+    ],
+    "totalWpCategories": 107,
+    "mappedToNextJs": 11
+  },
+  "priceEstimationRanges": {
+    "generators_motors": "3,000,000 - 8,000,000 COP",
+    "submersible_pumps": "1,000,000 - 4,000,000 COP",
+    "external_pumps": "800,000 - 2,800,000 COP",
+    "welders": "1,000,000 - 3,000,000 COP",
+    "power_tools": "300,000 - 1,100,000 COP",
+    "diamond_blades": "50,000 - 250,000 COP",
+    "oils_lubricants": "50,000 - 250,000 COP",
+    "accessories": "100,000 - 400,000 COP"
+  }
+}

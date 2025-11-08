@@ -1,0 +1,75 @@
+# Dependencies
+node_modules/
+next/node_modules/
+
+# Next.js build output
+.next/
+next/.next/
+out/
+build/
+
+# Production
+dist/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env files
+.env*.local
+.env
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# WordPress mirror (not needed for Next.js)
+www.xcp.com.co/
+hts-cache/
+hts-log.txt
+cookies.txt
+backblue.gif
+fade.gif
+index.html
+*.gif
+cdnjs.cloudflare.com/
+demo.madrasthemes.com/
+gso.kommo.com/
+i0.wp.com/
+stats.wp.com/
+
+# Nuxt (excluded per user request)
+nuxt/
+
+# Temporary extraction files
+extract-products.js
+extract-all-products.js
+extracted-products.json
+extracted-all-products.json
+generate-demodata-snippet.js
+generate-typescript-products.js
+typescript-products.json
+demodata-products-snippet.ts
+*.rar
+*.zip
+
+# Keep only necessary docs
+# CLAUDE.md - keep
+# INSTRUCCIONES_FINALES.md - keep
+# QUICK-START-GUIDE.md - keep
+# README*.md - keep

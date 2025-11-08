@@ -1,0 +1,361 @@
+// Variables de colores del tema XCP (basadas en Electro theme)
+:root {
+  --color-primary: #cf2e2e;
+  --color-primary-hover: #b62727;
+  --color-secondary: #54595f;
+  --color-accent: #61ce70;
+  --color-text: #7a7a7a;
+  --color-heading: #333333;
+  --color-border: #dddddd;
+  --color-bg: #ffffff;
+  --color-bg-light: #f5f5f5;
+  --color-success: #61ce70;
+  --color-warning: #fcb900;
+  --color-danger: #cf2e2e;
+
+  --font-primary: 'Inter', 'Roboto', sans-serif;
+  --font-secondary: 'Roboto Slab', serif;
+
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+
+  --border-radius: 4px;
+  --border-radius-lg: 8px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+// Reset básico
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  color: var(--color-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+button, .btn {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  padding: 12px 30px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  display: inline-block;
+  text-align: center;
+
+  &.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+
+    &:hover {
+      background-color: var(--color-primary-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+
+    &:hover {
+      background-color: #404449;
+    }
+  }
+
+  &.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+
+    &:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container-fluid {
+  width: 100%;
+  padding: 0 20px;
+}
+
+// Utilities
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.mt-1 { margin-top: var(--spacing-xs); }
+.mt-2 { margin-top: var(--spacing-sm); }
+.mt-3 { margin-top: var(--spacing-md); }
+.mt-4 { margin-top: var(--spacing-lg); }
+.mt-5 { margin-top: var(--spacing-xl); }
+
+.mb-1 { margin-bottom: var(--spacing-xs); }
+.mb-2 { margin-bottom: var(--spacing-sm); }
+.mb-3 { margin-bottom: var(--spacing-md); }
+.mb-4 { margin-bottom: var(--spacing-lg); }
+.mb-5 { margin-bottom: var(--spacing-xl); }
+
+.py-1 { padding-top: var(--spacing-xs); padding-bottom: var(--spacing-xs); }
+.py-2 { padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); }
+.py-3 { padding-top: var(--spacing-md); padding-bottom: var(--spacing-md); }
+.py-4 { padding-top: var(--spacing-lg); padding-bottom: var(--spacing-lg); }
+.py-5 { padding-top: var(--spacing-xl); padding-bottom: var(--spacing-xl); }
+
+// Grid system
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.col {
+  flex: 1;
+  padding: 0 15px;
+}
+
+// Product Cards
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin: 30px 0;
+}
+
+// Loading
+.loading {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(207, 46, 46, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Badges
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 3px;
+
+  &.badge-sale {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  &.badge-new {
+    background-color: var(--color-success);
+    color: white;
+  }
+
+  &.badge-stock {
+    background-color: var(--color-secondary);
+    color: white;
+  }
+}
+
+.main-content {
+  min-height: 60vh;
+}
+
+// Responsive breakpoints
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+  }
+
+  // Hide on tablet and below
+  .hide-md { display: none !important; }
+
+  // Responsive text
+  .text-md-center { text-align: center; }
+
+  // Product grid adjustments
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+    padding: 0 15px;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  h5 { font-size: 1.1rem; }
+
+  // Hide on mobile
+  .hide-sm { display: none !important; }
+
+  // Mobile text alignment
+  .text-sm-center { text-align: center; }
+  .text-sm-left { text-align: left; }
+
+  // Mobile buttons - larger touch targets
+  button, .btn {
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+
+  // Product grid adjustments
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+  }
+
+  // Reduce spacing on mobile
+  :root {
+    --spacing-xs: 0.4rem;
+    --spacing-sm: 0.8rem;
+    --spacing-md: 1.2rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    padding: 0 12px;
+  }
+
+  body {
+    font-size: 13px;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.3rem; }
+  h4 { font-size: 1.15rem; }
+
+  // Hide on small mobile
+  .hide-xs { display: none !important; }
+
+  // Show only on mobile
+  .show-xs { display: block !important; }
+
+  // Mobile-only text alignment
+  .text-xs-center { text-align: center; }
+
+  // Product grid - 2 columns on small mobile
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  // Smaller buttons on very small screens
+  button, .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  // Mobile spacing reductions
+  :root {
+    --spacing-xs: 0.3rem;
+    --spacing-sm: 0.6rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.2rem;
+    --spacing-xl: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  body {
+    font-size: 12px;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.15rem; }
+
+  // Very small mobile adjustments
+  button, .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+// Mobile-friendly utilities
+@media (hover: none) and (pointer: coarse) {
+  // Touch device optimizations
+  a, button, .btn, input, select, textarea {
+    -webkit-tap-highlight-color: rgba(207, 46, 46, 0.1);
+  }
+
+  // Larger touch targets
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

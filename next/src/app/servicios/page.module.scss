@@ -1,0 +1,129 @@
+.serviciosPage {
+  min-height: 60vh;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 60px;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+  }
+
+  .divider {
+    width: 80px;
+    height: 4px;
+    background: var(--color-primary);
+    margin: 0 auto;
+  }
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.serviceCard {
+  background: white;
+  padding: 40px 30px;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+
+    .serviceIcon svg {
+      stroke: var(--color-primary);
+      transform: scale(1.1);
+    }
+  }
+
+  .serviceIcon {
+    margin-bottom: 25px;
+
+    svg {
+      stroke: var(--color-secondary);
+      transition: all 0.3s ease;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--color-heading);
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+}
+
+.ctaSection {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  border-radius: var(--border-radius-lg);
+  color: white;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+  }
+
+  :global(.btn-large) {
+    padding: 18px 50px;
+    font-size: 18px;
+    font-weight: 700;
+    background: white;
+    color: var(--color-primary);
+
+    &:hover {
+      background: #f0f0f0;
+      color: var(--color-primary-hover);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader h1 {
+    font-size: 2rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection {
+    padding: 40px 20px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}

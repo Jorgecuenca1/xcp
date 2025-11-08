@@ -1,0 +1,385 @@
+.categoriasPage {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 0.5rem;
+      color: #333;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+    }
+
+    .addBtn {
+      padding: 0.875rem 1.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+
+    .categoryCard {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .categoryImage {
+        width: 100%;
+        height: 200px;
+        background: #f5f5f5;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .categoryContent {
+        padding: 1.5rem;
+
+        .categoryHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 0.75rem;
+
+          h3 {
+            margin: 0;
+            color: #333;
+            font-size: 1.25rem;
+          }
+
+          .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+
+            &.active {
+              background: #e8f5e9;
+              color: #2e7d32;
+            }
+
+            &.inactive {
+              background: #ffebee;
+              color: #c62828;
+            }
+          }
+        }
+
+        .description {
+          color: #666;
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+          line-height: 1.5;
+        }
+
+        .categoryMeta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 0;
+          border-top: 1px solid #f0f0f0;
+          border-bottom: 1px solid #f0f0f0;
+          margin-bottom: 1rem;
+
+          .slug {
+            color: #999;
+            font-size: 0.85rem;
+            font-family: monospace;
+          }
+
+          .count {
+            color: #667eea;
+            font-weight: 500;
+            font-size: 0.9rem;
+          }
+        }
+
+        .actions {
+          display: flex;
+          gap: 0.5rem;
+
+          button {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+
+            &.editBtn {
+              background: #e3f2fd;
+              color: #1976d2;
+
+              &:hover {
+                background: #1976d2;
+                color: white;
+              }
+            }
+
+            &.toggleBtn {
+              background: #f5f5f5;
+              color: #666;
+              flex: 0;
+
+              &:hover {
+                background: #e0e0e0;
+              }
+            }
+
+            &.deleteBtn {
+              background: #ffebee;
+              color: #c62828;
+              flex: 0;
+
+              &:hover {
+                background: #c62828;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      background: white;
+      border-radius: 12px;
+
+      .emptyIcon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        margin: 0 0 0.5rem;
+        color: #333;
+      }
+
+      p {
+        margin: 0 0 1.5rem;
+        color: #999;
+      }
+
+      .emptyBtn {
+        padding: 0.875rem 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  // Modal
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+
+    .modalContent {
+      background: white;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+      .modalHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid #e0e0e0;
+
+        h2 {
+          margin: 0;
+          color: #333;
+        }
+
+        .closeBtn {
+          background: none;
+          border: none;
+          font-size: 1.5rem;
+          cursor: pointer;
+          color: #999;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #333;
+          }
+        }
+      }
+
+      .form {
+        padding: 2rem;
+
+        .formGroup {
+          margin-bottom: 1.5rem;
+
+          label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95rem;
+
+            .required {
+              color: #d32f2f;
+            }
+          }
+
+          input,
+          textarea,
+          select {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+
+            &:focus {
+              outline: none;
+              border-color: #667eea;
+              box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            }
+          }
+
+          textarea {
+            resize: vertical;
+          }
+
+          select {
+            cursor: pointer;
+            background: white;
+          }
+        }
+
+        .checkboxGroup {
+          margin-bottom: 1.5rem;
+
+          label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+
+            input[type='checkbox'] {
+              width: 20px;
+              height: 20px;
+              cursor: pointer;
+            }
+
+            span {
+              font-weight: 500;
+              color: #333;
+            }
+
+            &:hover span {
+              color: #667eea;
+            }
+          }
+        }
+
+        .modalActions {
+          display: flex;
+          gap: 1rem;
+          justify-content: flex-end;
+          padding-top: 1.5rem;
+          border-top: 1px solid #e0e0e0;
+
+          .cancelBtn {
+            padding: 0.875rem 1.5rem;
+            background: white;
+            border: 2px solid #e0e0e0;
+            color: #666;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &:hover {
+              border-color: #999;
+              color: #333;
+            }
+          }
+
+          .saveBtn {
+            padding: 0.875rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s;
+
+            &:hover {
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

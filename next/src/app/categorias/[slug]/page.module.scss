@@ -1,0 +1,140 @@
+.categoryPage {
+  min-height: 60vh;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+  font-size: 14px;
+
+  a {
+    color: var(--color-text);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+
+  .separator {
+    color: var(--color-text);
+  }
+
+  .current {
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+}
+
+.categoryHeader {
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+  }
+}
+
+.subcategoriesSection {
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+.subcategoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.subcategoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  background: white;
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+
+    span {
+      color: var(--color-primary);
+    }
+  }
+
+  svg {
+    stroke: var(--color-primary);
+    margin-bottom: 15px;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-heading);
+    margin-bottom: 8px;
+  }
+
+  span {
+    font-size: 13px;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-size: 1.75rem;
+    margin: 0;
+  }
+
+  .productCount {
+    font-size: 14px;
+    color: var(--color-text);
+  }
+}
+
+.noProducts {
+  text-align: center;
+  padding: 60px 20px;
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .categoryHeader h1 {
+    font-size: 2rem;
+  }
+
+  .subcategoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
