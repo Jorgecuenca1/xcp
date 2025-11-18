@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Next.js Application
+  xcp-next:
+    build:
+      context: ./next
+      dockerfile: Dockerfile
+    container_name: xcp_next
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_SITE_URL=https://xcp.seguroslavictoria.co
+      - NEXT_PUBLIC_API_URL=https://xcp.seguroslavictoria.co/api
+    expose:
+      - "3000"
+    networks:
+      - xcp-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # HTTPS Portal - Reverse proxy with automatic SSL
+  https-portal:
+    image: steveltn/https-portal:1
+    container_name: xcp_https_portal
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    environment:
+      DOMAINS: 'xcp.seguroslavictoria.co -> http://xcp-next:3000'
+      STAGE: 'production'  # Cambiar a 'local' para desarrollo, 'staging' para pruebas, 'production' para producción
+      # FORCE_RENEW: 'true'  # Descomentar solo si necesitas forzar renovación de certificados
+      CLIENT_MAX_BODY_SIZE: 10M
+      # Configuraciones adicionales opcionales
+      # WEBSOCKET: 'true'  # Si necesitas WebSocket support
+      # GZIP: 'on'  # Compresión GZIP
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+      - https-portal-vhosts:/var/www/vhosts
+    depends_on:
+      - xcp-next
+    networks:
+      - xcp-network
+
+networks:
+  xcp-network:
+    driver: bridge
+
+volumes:
+  https-portal-data:
+    driver: local
+  https-portal-vhosts:
+    driver: local

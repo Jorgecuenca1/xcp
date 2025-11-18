@@ -107,16 +107,45 @@ interface Product {
 }
 ```
 
-## 🚢 Compilación para Producción
+## 🚢 Deployment
+
+### Opción 1: Compilación Local
 
 ```bash
+cd next
 npm run build
-npm run start      # Servir build de producción
+npm run start      # Servir build de producción en puerto 3001
 ```
+
+### Opción 2: Docker con HTTPS (Recomendado)
+
+```bash
+# Iniciar con Docker Compose (incluye SSL automático)
+docker-compose up -d --build
+
+# Ver logs
+docker-compose logs -f
+
+# Acceder a la aplicación
+https://xcp.seguroslavictoria.co
+```
+
+**Ver documentación completa**: [DEPLOY-DOCKER.md](./DEPLOY-DOCKER.md)
+
+### Opción 3: Digital Ocean Droplet
+
+```bash
+# Deployment tradicional con PM2
+./deploy.sh
+```
+
+**Ver documentación**: [DEPLOY-DIGITAL-OCEAN.md](./DEPLOY-DIGITAL-OCEAN.md)
 
 ## 📝 Documentación Adicional
 
-- [QUICK-START-GUIDE.md](./QUICK-START-GUIDE.md) - Guía de inicio rápido
+- [DEPLOY-DOCKER.md](./DEPLOY-DOCKER.md) - **Deployment con Docker y HTTPS Portal (Recomendado)**
+- [DEPLOY-DIGITAL-OCEAN.md](./DEPLOY-DIGITAL-OCEAN.md) - Deployment en Digital Ocean con PM2
+- [QUICK-START-GUIDE.md](./QUICK-START-GUIDE.md) - Guía de inicio rápido para desarrollo
 - [INSTRUCCIONES_FINALES.md](./INSTRUCCIONES_FINALES.md) - Instrucciones finales de configuración
 - [CLAUDE.md](./CLAUDE.md) - Información del proyecto para Claude Code
 
