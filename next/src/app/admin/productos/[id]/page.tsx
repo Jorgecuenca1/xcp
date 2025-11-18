@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../nuevo/form.module.scss';
 
-export default function EditarProducto({ params }: { params: { id: string } }) {
+export default function EditarProducto({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const router = useRouter();
   const [categories, setCategories] = useState<any[]>([]);
   const [brands, setBrands] = useState<any[]>([]);
@@ -35,11 +36,11 @@ export default function EditarProducto({ params }: { params: { id: string } }) {
     loadCategories();
     loadBrands();
     loadProduct();
-  }, [params.id]);
+  }, [id]);
 
   const loadProduct = () => {
     const products = JSON.parse(localStorage.getItem('products') || '[]');
-    const product = products.find((p: any) => p.id === params.id);
+    const product = products.find((p: any) => p.id === id);
 
     if (product) {
       setFormData({
@@ -85,7 +86,7 @@ export default function EditarProducto({ params }: { params: { id: string } }) {
     setLoading(true);
 
     const updatedProduct = {
-      id: params.id,
+      id: id,
       ...formData,
       price: parseFloat(formData.price),
       stock: parseInt(formData.stock),
@@ -95,7 +96,7 @@ export default function EditarProducto({ params }: { params: { id: string } }) {
 
     // Actualizar en localStorage
     const products = JSON.parse(localStorage.getItem('products') || '[]');
-    const index = products.findIndex((p: any) => p.id === params.id);
+    const index = products.findIndex((p: any) => p.id === id);
 
     if (index !== -1) {
       products[index] = { ...products[index], ...updatedProduct };

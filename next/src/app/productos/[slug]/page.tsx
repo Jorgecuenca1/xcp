@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import Link from 'next/link'
 import { getProducts, getCategoryTree, type Product as ProductType } from '@/lib/demoData'
 import styles from './page.module.scss'
@@ -8,8 +8,9 @@ import styles from './page.module.scss'
 export default function ProductPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
+  const { slug } = use(params)
   const [product, setProduct] = useState<ProductType | null>(null)
   const [category, setCategory] = useState<any>(null)
   const [currentImage, setCurrentImage] = useState('')
@@ -18,7 +19,7 @@ export default function ProductPage({
 
   useEffect(() => {
     const products = getProducts()
-    const foundProduct = products.find(p => p.slug === params.slug)
+    const foundProduct = products.find(p => p.slug === slug)
 
     if (foundProduct) {
       setProduct(foundProduct)
@@ -30,7 +31,7 @@ export default function ProductPage({
       const foundCategory = allCategories.find(cat => cat.id === foundProduct.category)
       setCategory(foundCategory)
     }
-  }, [params.slug])
+  }, [slug])
 
   if (!product) {
     return <div className={styles.productPage}><div className="container py-4">Cargando...</div></div>

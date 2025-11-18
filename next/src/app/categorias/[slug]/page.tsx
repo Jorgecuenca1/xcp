@@ -3,15 +3,16 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import ProductCard from '@/components/ProductCard'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import { getCategories, getProducts, getProductsByCategory, type Product, type Category } from '@/lib/demoData'
 import styles from './page.module.scss'
 
 export default function CategoryPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
+  const { slug } = use(params)
   const [category, setCategory] = useState<Category | null>(null)
   const [childCategories, setChildCategories] = useState<Category[]>([])
   const [categoryPath, setCategoryPath] = useState<Category[]>([])
@@ -19,7 +20,7 @@ export default function CategoryPage({
 
   useEffect(() => {
     const categories = getCategories()
-    const foundCategory = categories.find(c => c.slug === params.slug)
+    const foundCategory = categories.find(c => c.slug === slug)
 
     if (!foundCategory) {
       notFound()
@@ -41,9 +42,9 @@ export default function CategoryPage({
     setCategoryPath(buildPath(foundCategory.id))
 
     // Get products
-    const products = getProductsByCategory(params.slug)
+    const products = getProductsByCategory(slug)
     setCategoryProducts(products.filter(p => p.active))
-  }, [params.slug])
+  }, [slug])
 
   if (!category) {
     return <div className="container py-4">Cargando...</div>
