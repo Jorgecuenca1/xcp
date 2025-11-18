@@ -117,18 +117,24 @@ npm run build
 npm run start      # Servir build de producción en puerto 3001
 ```
 
-### Opción 2: Docker con HTTPS (Recomendado)
+### Opción 2: Docker con HTTPS (Recomendado) ⚡
+
+**¡Plug and Play! Sin configuración necesaria.**
 
 ```bash
-# Iniciar con Docker Compose (incluye SSL automático)
+# Un solo comando - ¡Todo funciona automáticamente!
 docker-compose up -d --build
 
-# Ver logs
+# Ver el progreso
 docker-compose logs -f
-
-# Acceder a la aplicación
-https://xcp.seguroslavictoria.co
 ```
+
+**Acceder**: https://xcp.seguroslavictoria.co
+
+- ✅ HTTPS automático con Let's Encrypt
+- ✅ Certificados SSL renovados automáticamente
+- ✅ Sin variables de entorno que configurar
+- ✅ Listo para producción
 
 **Ver documentación completa**: [DEPLOY-DOCKER.md](./DEPLOY-DOCKER.md)
 

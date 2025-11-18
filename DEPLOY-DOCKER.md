@@ -9,7 +9,9 @@ Guía completa para desplegar la aplicación XCP Next.js usando Docker y HTTPS P
 - **Dominio configurado**: `xcp.seguroslavictoria.co` apuntando a tu servidor (registro A en DNS)
 - **Puertos abiertos**: 80 (HTTP) y 443 (HTTPS)
 
-## 🚀 Inicio Rápido
+## 🚀 Inicio Rápido (Plug and Play)
+
+**¡No necesitas configurar nada! Todo funciona de inmediato.**
 
 ### 1. Clonar el repositorio
 
@@ -18,24 +20,16 @@ git clone https://github.com/Jorgecuenca1/xcp.git
 cd xcp
 ```
 
-### 2. Configurar variables de entorno (opcional)
-
-El archivo `docker-compose.yml` ya incluye la configuración necesaria, pero puedes personalizarla:
-
-```bash
-# Copiar archivo de ejemplo (opcional)
-cp .env.docker.example .env.docker
-
-# Editar variables si es necesario
-nano .env.docker
-```
-
-### 3. Desplegar con Docker Compose
+### 2. Desplegar con un solo comando
 
 ```bash
 # Construir y levantar los servicios
 docker-compose up -d --build
+```
 
+### 3. Ver el progreso
+
+```bash
 # Ver logs en tiempo real
 docker-compose logs -f
 
@@ -43,11 +37,13 @@ docker-compose logs -f
 docker-compose ps
 ```
 
-### 4. Verificar el deployment
+### 4. Verificar que funciona
 
 - **HTTP**: http://xcp.seguroslavictoria.co (redirige automáticamente a HTTPS)
 - **HTTPS**: https://xcp.seguroslavictoria.co
 - **Health Check**: https://xcp.seguroslavictoria.co/api/health
+
+**¡Eso es todo!** El sitio está funcionando con HTTPS automático.
 
 ## 📁 Estructura Docker
 
@@ -376,6 +372,62 @@ docker run --rm -v xcp_https-portal-data:/data -v $(pwd):/backup alpine tar xzf 
 - **HTTPS Portal Docs**: https://github.com/SteveLTN/https-portal
 - **Next.js Docs**: https://nextjs.org/docs
 
+## 🔧 Configuración Avanzada (Opcional)
+
+### Variables de Entorno Personalizadas
+
+Si más adelante necesitas personalizar la configuración, puedes agregar variables de entorno al archivo `docker-compose.yml`:
+
+```yaml
+services:
+  xcp-next:
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_PUBLIC_SITE_URL=https://xcp.seguroslavictoria.co
+      - NEXT_PUBLIC_API_URL=https://xcp.seguroslavictoria.co/api
+      # Otras variables personalizadas...
+```
+
+O crear un archivo `.env`:
+
+```bash
+# Copiar archivo de ejemplo
+cp .env.docker.example .env
+
+# Editar según necesites
+nano .env
+```
+
+Luego referenciarlo en `docker-compose.yml`:
+
+```yaml
+services:
+  xcp-next:
+    env_file:
+      - .env
+```
+
+### Cambiar el Dominio
+
+Para usar un dominio diferente, edita `docker-compose.yml`:
+
+```yaml
+https-portal:
+  environment:
+    DOMAINS: 'tu-dominio.com -> http://xcp-next:3000'
+```
+
+### Cambiar el Stage de HTTPS
+
+Para pruebas, puedes usar staging:
+
+```yaml
+https-portal:
+  environment:
+    STAGE: 'staging'  # o 'local' para desarrollo sin SSL real
+```
+
 ## 📝 Notas Importantes
 
 1. **Primera ejecución**: Los certificados SSL pueden tardar 1-2 minutos en generarse
@@ -383,6 +435,7 @@ docker run --rm -v xcp_https-portal-data:/data -v $(pwd):/backup alpine tar xzf 
 3. **DNS**: Asegúrate de que el dominio apunte a tu servidor antes de iniciar
 4. **Puertos**: Los puertos 80 y 443 deben estar libres y accesibles desde internet
 5. **Renovación**: Los certificados se renuevan automáticamente antes de expirar
+6. **Sin configuración**: El sistema funciona sin necesidad de configurar variables de entorno
 
 ---
 
